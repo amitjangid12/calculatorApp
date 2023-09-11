@@ -19,7 +19,7 @@ function Calculator() {
             setInput((prevInput) => prevInput.slice(0, -1, value));
         }
 
-        input.length >= 13 ? setSize('20px') : setSize('30px')
+        input.length >= 10 ? setSize('20px') : setSize('30px')
 
         if (value === '=') {
             try {
@@ -35,7 +35,18 @@ function Calculator() {
             } catch (error) {
                 setInput('Error');
             }
-        } else if (value === 'C') {
+        }
+        else if (value === '.') {
+            // If a dot is pressed, check if it follows an operator and insert '0' if needed
+            setInput((prevInput) => {
+              const lastChar = prevInput.charAt(prevInput.length - 1);
+              if (['+', '-', '*', '/'].includes(lastChar)) {
+                return prevInput + '0' + value;
+              } else {
+                return prevInput + value;
+              }
+            });
+          }  else if (value === 'C') {
             setInput(0);
         } else if (value === backspace) {
 

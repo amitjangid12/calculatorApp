@@ -30,13 +30,12 @@ $gradient-color2 :#1d1c42;
 }
 
 .screen {
-  width: 95%;
   overflow: hidden;
   height: 100px;
-  margin: 0 auto;
   background-image: linear-gradient(to right ,#134e43,#1a1a3f);
   padding: 10px;
   border-radius: 5px;
+  @extend .screen-part;
 }
 
 .buttons {
